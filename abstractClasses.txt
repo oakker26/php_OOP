@@ -1,0 +1,140 @@
+Abstract Class
+Abstract classes and methods are when the parent class has a named method, but need its child class(es) to fill out the tasks.
+abstract classes and methods တွေကို parent class မှာပဲ method name ပေးခဲ့မယ်,ဒါပေမယ့် child class(es)တွေမှာတော့ အဲ့ method ဘာတွေလုပ်ရမယ်ဆိုတဲ့ tasksတွေကိုရေးပေးရမယ်
+An abstract class is a class that contains at least one abstract method. An abstract method is a method that is declared, but not implemented in the code.
+abstract classမှာ အနည်းဆုံး abstract method တစ်ခုပါရမယ်.abstract method ဆိုတာ method ကိုပဲdecalre လုပ်ထားပီး code တွေကို မရေးထားဘူး
+An abstract class or method is defined with the abstract keyword:
+abstract class or method ဆိုတာ abstract keyword နဲ့ declare လုပ်ထားတာကိုပြောတာ
+---------------------------------------------------------------------------------------------------------------------------------------
+example
+abstract class Fruit{
+	abstract public function method1();
+	abstract public function method2($name,$color);
+	abstract public function methiod3():string;
+}
+---------------------------------------------------------------------------------------------------------------------------------------
+When inheriting from an abstract class, the child class method must be defined with the same name, 
+and the same or a less restricted access modifier
+child class ရဲ့ methods တွေ ကို same name ပေးရမယ် ဥပမာ parent class မှာ method1 ပေးထားရင် child class မှာလည်း method1 ဆိုပီးတော့ declare လုပ်ရမယ်
+access modifer တွေကိုလည်း same ဖြစ်အောင်ပေးရမယ် parent class မှာ public,protected ဆို childမှာ လည်း pbulicနဲ့ပဲရေးရမယ် ,parent classမှာ private နဲ့ပေးလို့မရဘူး
+if the abstract method is defined as protected, the child class method must be defined as either protected or public, but not private
+abstract method က protected နဲ့ declare ထားတယ်ဆိုရင် child class method က protected or public ဖြစ်ရမယ် private ဖြစ်လို့မရဘူး
+Also, the type and number of required arguments must be the same
+type ကို declare လုပ်ထားရင်လည်း child မှာ retrun ပေးတာကလည်း အဲ့type ပဲ ဖြစ်ရမယ် argunents တွေကလည်းတူသင့်တယ်
+However, the child classes may have optional arguments in addition.
+child classes တွေမှာတော့ အခြားလိုအပ်တဲ့ optional arguments တွေကို ထည့်လို့ရတယ်
+------------------------------------------------------------------------------------------------------------------------------------------
+a child class is inherited from an abstract class, we have the following rules:
+child class တွေက abstract class ကနေလာတယ်ဆိုရင် လိုက်နာရမယ် rulesတွေရှိတယ်
+The child class method must be defined with the same name and it redeclares the parent abstract method
+child class တွေက same name နဲ့ parent abstract method တွေကို ပြန်declare လုပ်ပေးရမယ်
+The child class method must be defined with the same or a less restricted access modifier
+child class method တွေ က access modifier တွေကိုလည်း same or restricted မဖြစ်အောင် တူအောင်သုံးရမယ်
+The number of required arguments must be the same. However, the child class may have optional arguments in addition
+argunents တွေကလည်းတူသင့်တယ် child classes တွေမှာတော့ အခြားလိုအပ်တဲ့ optional arguments တွေကို ထည့်လို့ရတယ်
+------------------------------------------------------------------------------------------------------------------------------------------
+example abstract class
+<?php
+abstract class Fruit{
+     public $name;
+     public function __construct($name)
+     {
+          $this->name=$name;
+     }
+     protected function intro() :string{
+          return "";
+     }
+}
+class Apple extends Fruit{
+     public function intro():string{
+          return "I m $this->name \n";
+     }
+}
+class Banana extends Fruit{
+     public function intro():string{
+          return "I m $this->name \n";
+     }
+}
+class Orange extends Fruit{
+     public function intro():string{
+          return "I m $this->name \n";
+     }
+}
+$apple=new Apple("apple");
+echo $apple->intro();
+$banana=new Banana("Banana");
+echo $banana->intro();
+$orange=new Orange("Orange");
+echo $orange->intro();
+-----------------------------------------------------------------------------------------------------------------------------------------
+Apple Banana and orange classes are inherited from the Fruit class;
+Apple Banana and orange classes တွေက Fruit class ရဲ့ child class တွေ့ဖစ်တယ်
+This means that the Audi, Volvo, and Citroen classes can use the public $name property 
+the public __construct() method from the Fruit class because of inheritance.
+child classes တွေ က parent class ရဲ့ property ကိုယူသုံးလို့ရတယ် parent class  ရဲ့ __construct method ကို လည်းသုံးလို့ရနေတယ်
+intro() is an abstract method that should be defined in all the child classes and they should return a string
+abstract method intro()ကိုလည်း chlid classes တွေမှာ ပြန် declare လုပ်ပီး type ကို လည်း တူအောင် string ပဲပြန်ပေးရတယ်
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Let's look at another example where the abstract method has an argument, and the child class has two optional arguments that are not defined in the parent's abstract method:
+
+parent class ရဲ့ abstract method က တစ်ခုပဲလက်ခံတယ် ဒါပေမယ် child class  မှာတော့ အခြားargument တွေကို  default အနေနဲ့ထည့်ပေးလိုက်လို့ရတယ်
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+more example for abstract class 
+<?php
+abstract class ParentClass {
+  // Abstract method with an argument
+  abstract protected function prefixName($name);
+}
+
+class ChildClass extends ParentClass {
+  // The child class may define optional arguments that are not in the parent's abstract method
+  public function prefixName($name, $separator = ".", $greet = "Dear") {
+    if ($name == "John Doe") {
+      $prefix = "Mr";
+    } elseif ($name == "Jane Doe") {
+      $prefix = "Mrs";
+    } else {
+      $prefix = "";
+    }
+    return "{$greet} {$prefix}{$separator} {$name}";
+  }
+}
+
+$class = new ChildClass;
+echo $class->prefixName("John Doe");
+echo "<br>";
+echo $class->prefixName("Jane Doe");
+?>
+----------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+<?php
+abstract class ParentClass {
+  // Abstract method with an argument
+  abstract protected function prefixName($name);
+}
+
+class ChildClass extends ParentClass {
+  public function prefixName($name) {
+    if ($name == "John Doe") {
+      $prefix = "Mr.";
+    } elseif ($name == "Jane Doe") {
+      $prefix = "Mrs.";
+    } else {
+      $prefix = "";
+    }
+    return "{$prefix} {$name}";
+  }
+}
+
+$class = new ChildClass;
+echo $class->prefixName("John Doe");
+echo "<br>";
+echo $class->prefixName("Jane Doe");
+?>
