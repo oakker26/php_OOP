@@ -1,0 +1,18 @@
+Class Constants
+[1].Constants cannot be changed once it is declared.
+constant က တစ်ခါ declare လုပ်ပီးတာနဲ့ ပြန် changed လို့မရပါဘူး အဲ့အတွက် default value ထည့်ပေးရပါမယ်
+[2].Class constants can be useful if you need to define some constant data within a class.
+constant data တွေ သတ်မှတ်ချင်တဲ့အခါမှာ သုံးတယ်
+[3].A class constant is declared inside a class with the const keyword.
+[4].Class constants are case-sensitive. However, it is recommended to name the constants in all uppercase letters
+class constants တွေ က case-sensitive ဖြစ်တဲ့အတွက် uppercase နဲ့ရေးဖို့ပဲ အကြံပြူပါတယ်
+We can access a constant from outside the class by using the class name followed by 
+the scope resolution operator (::) followed by the constant name
+class ရဲ့ အပြင်ဘက်ကနေပီးတော့ တစ်ခါတည်းပြချင်ရင် 
+
+className::constantName;
+
+we can access a constant from inside the class by using the self keyword followed by the scope resolution operator (::) followed by the constant name, like here
+class ထဲမှာပဲ ပြန်သုံးမယ်ဆိုရင်တော့ self keyword ကို သုံးရမယ်
+
+self::constantName;

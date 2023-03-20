@@ -1,0 +1,49 @@
+__construct function
+A constructor allows you to initialize an object's properties upon creation of the object.
+constructor က object တစ်ခုကို instantiate လုပ်လိုက်တာနဲ့ object ထဲမှာ ရှိတဲ့ properties တွေကို create လုပ်ခိုင်းလို့ရတယ်
+
+construct function က underscore နှစ်ခု __ နဲ့စတယ်
+a constructor saves us from calling the set_name() method which reduces the amount of code:
+constructorနဲ့ဆိုရင် set_name() method ဆောက်စရာမလိုတော့ဘူး constructor ကို argument လက်ခံပီးတော့ instantce လုပ်တဲ့အချိန်မှာပဲ တစ်ခါတည်းထည့်ပေးလိုက်လို့ရတယ်
+------------------------------------------------------------------------------------------------
+example 
+
+class Fruit{
+	public $name;
+	public $color;
+	function __construct($name,$color){
+	$this->name=$name;
+	$this->color=$color;
+	}
+	function get_name(){
+		return $this->name;
+	}
+	function get_color(){
+		return $this->color;
+	}
+	
+};
+
+$apple=new Fruit("apple","red");
+
+echo "this is $apple->get_name() with $apple->get_color() color";
+
+------------------------------------------------------------------------------------------------
+__destruct Function
+A destructor is called when the object is destructed or the script is stopped or exited.
+this function at the end of the script.
+script ကို ရပ်ပစ်ချင်တာတို့ ထွက်ချင်တာတို့ အတွက် သုံးတယ်
+The example below has a __construct() function that is automatically called when you create an object from a class, and a __destruct() function that is automatically called at the end of the script:
+example:
+class Fruit{
+	public $name;
+	public $color;
+	function __construct($name,$color){
+	$this->name=$name;
+	$this->color=$color;
+	}
+	function __destruct(){
+	echo "this fruit is {$this->name} and {$this->color}  color"
+	}
+}
+$apple=new Fruit("apple","green");

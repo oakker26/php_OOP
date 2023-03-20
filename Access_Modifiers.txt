@@ -1,0 +1,65 @@
+PHP - Access Modifiers
+[1].Properties and methods can have access modifiers which control where they can be accessed.
+properties နဲ့ methods တွေမှာ ဘာကို ၀င်မယ်လက်ခံမယ်ဆိုတာကို control လုပ်ဖို့အတွက်  access modifiers လို့ခေါ်တယ် 
+There are three access modifiers
+၁.public - the property or method can be accessed from everywhere. This is default
+public keyword က property တွေ method တွေမှာ သုံးလို့ရတယ် ဘယ်နေရာကမဆို ပြောင်းလဲလို့ရတယ်
+-----------------------------------------------------------------------------------------------------------------------------
+public modifier example
+
+class Fruit {
+    public $name = 'apple';
+
+    public function publicMethod() {
+        echo 'This is a public method.';
+    }
+}
+
+$obj = new Fruit;
+$obj->name="banana";// Output: This is a public variable.
+echo "$obj->name";
+$obj->publicMethod();    // Output: This is a public method.
+-----------------------------------------------------------------------------------------------------------------------------
+၂.protected-  the property or method can be accessed within the class and by classes derived from that class
+protected ဆိုရင် class တွေထဲမှာပဲ exteneds လုပ်ပီး methods တွေ properties တွေ ပြန်သုံးလို့ရမယ် ပြင်လို့ရမယ် method တွေ property တွေကို direct သုံးလို့မရဘူး 
+-----------------------------------------------------------------------------------------------------------------------------
+protected modifier example
+
+class Fruit{
+	protected $name="apple";
+	protected function protectedMethod(){
+	 echo "this is protected method";
+	}
+}
+
+class ChildFruit extends Fruit{
+	public function accessProtected(){
+	$this->name="san kyi der";
+     echo "$this->name";
+	$this->protectedMethod();
+	}
+}
+$obj=new ChildFruit();
+$obj->accessProtected();
+----------------------------------------------------------------------------------------------------------------------------
+၃.private -the property or method can ONLY be accessed within the class
+
+private ဆိုရင် အဲ့ class ထဲမှာပဲသုံးလို့ရမယ်ပြင်လို့ရမယ် class တွေ extends လုပ်ပီးလည်း property and method သုံးမရဘူး အပြင်ကနေလည်း ပြင်မရဘူး default ပေးလိုက်တာတွေပဲသုံးလို့ရမယ်
+
+class Fruit {
+     private $name="apple";
+     private function privateMethod(){
+          echo "this is private method";
+     }
+     public function accessPrivate(){
+          $this->name="kwikwi";
+          echo "$this->name \n";
+          $this->privateMethod();
+     }
+}
+$obj= new Fruit();
+$obj->accessPrivate();
+
+
+
+

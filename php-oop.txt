@@ -1,0 +1,102 @@
+[1].OOP advantages....
+1.OOP is faster and easier to execute
+ပိုမြန်ပီးတော့ maintain လုပ်ကတာတွေ code ရေးရတာတွေမှာပိုလွယ်တယ်
+2.clear stracture for the program
+code တွေကိုပိုပီးရှင်းလင်းတယ်
+3.DRY(Don't repeat yourself)
+code တွေပြန်မထပ်အောင်ပိုရေးနိုင်တယ်
+-------------------------------------------------------------------------------------------------------------------------------------------
+[2].Classes and Objects
+classes က အသီးလို့ပြောလိုက်တာနဲ့ apple ,banana, orange... အသီးအားလုံးကိုကိုယ်စားပြူတယ်
+objects ကတော့ apple, banana,orange .... အဲ့ဒီနာမည်တွေကို ပြောတာမျိုး
+-------------------------------------------------------------------------------------------------------------------------------------------
+[3].Define a Class
+
+a class defined by using class keyword , follow by the name of class and a par of curly braces({}).All its properties and methods go inside the braces;
+class တွေကို class keyword နဲ့ရေးတယ်, ပီးတော့ နာမည်(stantard အနေနဲ့နာမည်အစတွေကို အကြီးနဲ့ရေးတယ်) နဲ့ တွန့်ကွင်းကိုဆက်ရေးမယ်, 
+တွန့်ကွင်းထဲမှာပဲ properties တွေ methodsတွေကိုရေးရမယ်း
+example of define a class....
+class Fruit {
+//code here
+}
+-------------------------------------------------------------------------------------------------------------------------------------------
+[3].how to declare properties and methods
+public keyword ကို သုံးပီးတော့မှ စရေးရတယ်း
+class ထဲမှာ ရေးထားတဲ့ variables တွေ ကို properties or form of fields or attributes လို့ခေါ်တယ်း
+class ထဲမှာ ရေးထားတဲ့ functions တွေကို methods လို့ခေါ်တယ်း
+
+class Fruit{
+// properties or form of fields or attributes 
+     public $name;
+     public $color;
+//methods
+     public function set_name($name){
+     $this->name = $name};
+     public function set_color($color){
+     $this->color=$color;
+     };
+}
+-------------------------------------------------------------------------------------------------------------------------------------------
+[4].Define Objects
+Classes are nothing without Objects;
+class က objects မပါပဲမရှိဘူး,
+create multiple objects from a class;
+class တစ်ခုထဲကနေပီး objects တွေအများကြီးတည်ဆောက်လို့ရတယ်
+each object has all the properties and methods defined in class
+object တစ်ခုချင်းဆီမှာ classမှာ သတ်မှတ်ထားတဲ့  proerties တွေ methods တွေပါတယ်,
+each object will have different property values;
+properties တွေရဲ့ တန်ဖိုးတွေကတော့ တူချင်မှတူမယ်
+objects of a class are created using [new] keyword
+class ထဲက objects တွေကို new keyword ကို သုံးပီးတော့ ဖန်တီးရတယ်
+-------------------------------------------------------------------------------------------------------------------------------------------
+[5].$this keyword
+$this keyword is refers to the current object, only available inside methods
+$this keyword က အဲ့ object ကိုပဲ ကိုယ်စားပြုတယ် , Object ထဲက Methods ထဲမှာပဲ ကိုယ်စားပြုတယ်;
+we can change the value of property 2 way;
+property တွေရဲ့ value ကို နည်းလမ်း 2 ခု နဲ့ ချိန်းနိုင်တယ်
+၁.inside the class (by adding a set_name() method use $this )
+class ထဲမှာ method တစ်ခုရေးပီး argument ပေးပီးတော့ $this  keyword နဲ့ class ထဲက property ကို ပြန်ခေါ်ပီးတော့ သုံးလို့ရတယ်
+၂.outside of the class(by directly changing the property value)
+class ထဲမှာ မချိန်း ပဲ အပြင်ကနေပဲတိုက်ရိုက်ချိန်းလို့ရတယ်
+class Fruit {
+  public $name;
+}
+$apple = new Fruit();
+$apple->name = "Apple";
+
+echo $apple->name;
+___________________________________________________________________________________________________________________________________________
+
+[6].instanceof
+to check if an object belongs to a specific class
+object က class ထဲမှာ ပါလားမပါလားစစ်တာ 
+
+___________________________________________________________________________________________________________________________________________
+EXAMPLE OF ALL ABOVE
+class Fruit {
+  // Properties
+  public $name;
+  public $color;
+
+  // Methods
+  function set_name($name) {
+    $this->name = $name;
+  }
+  function get_name() {
+    return $this->name;
+  }
+  function set_color($color) {
+    $this->color = $color;
+  }
+  function get_color() {
+    return $this->color;
+  }
+}
+
+$apple = new Fruit();
+$apple->set_name('Apple');
+$apple->set_color('Red');
+
+echo "Name: " . $apple->get_name();
+echo "<br>";
+echo "Color: " . $apple->get_color();

@@ -1,0 +1,103 @@
+Inheritance in OOP = When a class derives from another class.
+
+The child class will inherit all the public and protected properties and methods from the parent class. In addition, it can have its own properties and methods.
+
+child class က parent class မှာရှိတဲ့ properties တွေ methods တွေကို public and protected access modifier တွေနဲ့ရေးထားတာတွေကို extends လုပ်လိုက်တာနဲ့ရတယ် ပီးတော့ child class မှာပဲ properties တွေ methods တွေထပ်ရသေးတယ် တူတာတွေပြန်ရေးရင်တော့ overwriteဖြစ်သွားမယ်
+---------------------------------------------------------------------------------------------------------------------------
+example
+;class Fruit {
+  public $name;
+  public $color;
+  public function __construct($name, $color) {
+    $this->name = $name;
+    $this->color = $color;
+  }
+  protected function intro() {
+    echo "The fruit is {$this->name} and the color is {$this->color}.";
+  }
+}
+
+class Strawberry extends Fruit {
+  public function message() {
+    echo "Am I a fruit or a berry? ";
+    echo "I m from child class of {$this->name} with {$this->color} color";
+    $this->intro();
+
+  }
+}
+
+// Try to call all three methods from outside class
+$strawberry = new Strawberry("Strawberry", "red");  // OK. __construct() is public
+$strawberry->message(); // OK. message() is public
+$strawberry->intro(); // ERROR. intro() is protected
+-----------------------------------------------------------------------------------------------------------------------------
+overwrite inherited method example
+<?php
+class Fruit {
+  public $name;
+  public $color;
+  public function __construct($name, $color) {
+    $this->name = $name;
+    $this->color = $color;
+  }
+  public function intro() {
+    echo "The fruit is {$this->name} and the color is {$this->color}.";
+  }
+}
+
+class Strawberry extends Fruit {
+  public $weight;
+  public function __construct($name, $color, $weight) {
+    $this->name = $name;
+    $this->color = $color;
+    $this->weight = $weight;
+  }
+  public function intro() {
+    echo "The fruit is {$this->name}, the color is {$this->color}, and the weight is {$this->weight} gram.";
+  }
+}
+
+$strawberry = new Strawberry("Strawberry", "red", 50);
+$strawberry->intro();
+?>
+-----------------------------------------------------------------------------------------------------------------------------
+final keyword
+final keyword က overwrite မဖြစ်အောင် cover ပေးတာမလို့ class မှာပေးလိုက်တာရင် class က finalဖြစ်သွားပီ နောက်ထပ်မရှိတော့ဘူး
+child class တွေမှာ extends လုပ်ပီးသုံးမရဘူး 
+အဲ့အတွက် final keyword ကို method တွေမှာပဲ သုံးကြတာများတယ် 
+-------------------------------------------------------------------------------------------------------------------------
+example in class
+final class MyClass {
+  private $name;
+
+  public function __construct($name) {
+    $this->name = $name;
+  }
+
+  public function sayHello() {
+    echo "Hello, my name is " . $this->name;
+  }
+}
+
+class MyChildClass extends MyClass {
+  // This will cause a Fatal Error because MyClass is marked as final and cannot be extended
+}
+
+$myObject = new MyClass("John");
+$myObject->sayHello(); // Output: Hello, my name is John
+----------------------------------------------------------------------------------------------------------------------------
+example in method
+class Animal {
+  final public function makeSound() {
+    echo "The animal makes a sound.";
+  }
+}
+
+class Dog extends Animal {
+  public function makeSound() { // This will cause an error because the makeSound method is marked as final
+    echo "The dog barks.";
+  }
+}
+
+$myDog = new Dog();
+$myDog->makeSound(); // This will cause a Fatal Error because the makeSound method is marked as final in the Animal class
