@@ -1,0 +1,23 @@
+interfaces
+Interfaces make it easy to use a variety of different classes in the same way. When one or more classes use the same interface, it is referred to as "polymorphism".
+interface is a set of abstract methods that define a contract that a class must implement.
+interfaces are declare with interface keywords
+example 
+<?php
+interface InterfaceName {
+  public function someMethod1();
+  public function someMethod2($name, $color);
+  public function someMethod3() : string;
+}
+?>
+----------------------------------------------------------------------------------------------------------------------------------------
+different between interface and abstract
+Interfaces cannot have properties, while abstract classes can
+interfaces တွေမှာ properties တွေမရှိဘူး,abstract classes တွေမှာတော့ properties တွေရှိတယ်
+All interface methods must be public,while abstract class methods is public or protected
+interface methods တွေ က public ပဲ ဖြစ်ရမယ်, abstract class methods တွေ က တော့ public or potected ဖြစ်လို့ရတယ်
+All methods in an interface are abstract,so they cannot be implemented in code and the abstract keyword is not necessary
+interface classထဲမှာရှိတဲ့ methods တွေက abstract method တွေဖြစ်တယ်,အဲ့အတွက် abstract keyword သုံးပီးdeclare လုပ်စရာမလိုတော့ဘူး
+Classes can implement an interface while inheriting from another class at the same time
+interface classes တွေက run နေတဲ့အချိန်မှာပဲ child class တွေကို ပါ တစ်ခါတည်းrun နိုင်တယ်
+
